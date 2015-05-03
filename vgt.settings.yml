@@ -1,0 +1,12 @@
+#YAML settings file - set vagrant config / spec including port forwarding and bridge device.  
+
+name: "vgt-ts3"
+  box: "ubuntu/trusty64"
+  mem: "2048"
+  vcpu: "2"
+  ip:  "192.168.0.66"
+  fwdport:
+   host: 9987
+   guest: 9987
+  bridge_int: "en0: Wifi (AirPort)"
+  bootstrap: "bootstrap.sh"

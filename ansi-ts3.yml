@@ -1,0 +1,28 @@
+#Ansible playbook - set vars - setup user/group - get compiled ts3 - and unpack.
+- hosts: ts3
+  vars:
+   ts3url: http://teamspeak.gameserver.gamed.de/ts3/releases/3.0.11.2/teamspeak3-server_linux-amd64-3.0.11.2.tar.gz
+   ts3file: teamspeak3-server_linux-amd64-3.0.11.2.tar.gz
+   user: ts3
+   uid: 501
+   gid: 501
+   group: ts3
+
+   path: /home/ts3/teamspeak3-server_linux-amd64
+
+  tasks:
+#setup user and group
+   - name: create ts3 group 
+     action: group name={{ group }} gid={{ 501 }}  state=present
+
+   - name: create ts3 user.
+     action: user name={{ user }} uid={{ 501 }} group={{ group }} state=present
+
+   - name: get_url
+     get_url: url={{ ts3url }} dest=/home/{{ user }}
+
+   - name: unpack ts3 tar file.
+     command: tar -xf {{ ts3file }} chdir=/home/{{ user }}
+
+   - name: change permissions on ts3 dir.
+     file: state=directory name={{ path }} owner={{ user }} group={{ group }} 
