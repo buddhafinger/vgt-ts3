@@ -1,6 +1,6 @@
 #YAML settings file - set vagrant config / spec including port forwarding and bridge device.  
 
-name: "vgt-ts3"
+  name: "vgt-ts3"
   box: "ubuntu/trusty64"
   mem: "2048"
   vcpu: "2"
