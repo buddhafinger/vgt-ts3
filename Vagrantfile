@@ -11,6 +11,7 @@ settings = YAML.load_file('settings/vgt.settings.yml')
  Vagrant.configure("2") do | config | 
     config.vm.box = settings["box"]
     config.vm.provision :shell, :path => settings["bootstrap"]
+    config.vm.provision "file", source: "templates/ansible_hosts", destination: "/home/vagrant/ansible_hosts"
     config.vm.host_name = settings["name"]
 
 #Using Virtualbox provider set cores and memory.
