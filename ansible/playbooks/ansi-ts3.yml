@@ -12,6 +12,9 @@
      - stat: path={{ ts3home }}
        register: ts3home
 
+     - stat: path={{ tokenfile }}
+       register: tokenfile
+
 #setup user and group
      - name: create ts3 group 
        action: group name={{ group }} gid={{ gid }}  state=present

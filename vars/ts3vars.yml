@@ -6,3 +6,4 @@ uid: 501
 gid: 501
 group: ts3
 path: /home/ts3/teamspeak3-server_linux-amd64
+tokenfile: /vagrant/token
