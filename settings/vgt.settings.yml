@@ -11,4 +11,5 @@
    host: 9987
    guest: 9987
   bridge_int: "en0: Wifi (AirPort)"
-  bootstrap: "bootstrap.sh"
+  bootstrap: "scripts/bootstrap.sh"
+  ts3home: "/home/ts3/teamspeak3-server_linux-amd64"

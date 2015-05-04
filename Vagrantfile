@@ -5,7 +5,7 @@
 require 'yaml'
 
 #Call settings / variables file.
-settings = YAML.load_file('vgt.settings.yml')
+settings = YAML.load_file('settings/vgt.settings.yml')
 
 #Do vagrant stuff with Vagrant v2 - Set box type, call provisioning script, set box name.
  Vagrant.configure("2") do | config | 

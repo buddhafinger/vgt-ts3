@@ -1,13 +1,16 @@
-   - name: install TS3 and setup swap. 
+   - name: install TS3 and setup server environment including creation of swap. 
      hosts: ts3
      connection: local
      gather_facts: false
      vars_files:
-      -  vars/ts3vars.yml
-      -  vgt.settings.yml
+      -  /vagrant/vars/ts3vars.yml
+      -  /vagrant/settings/vgt.settings.yml
 
      tasks:
-     - include: tasks/swap.yml
+     - include: /vagrant/ansible/tasks/swap.yml
+
+     - stat: path={{ ts3home }}
+       register: ts3home
 
 #setup user and group
      - name: create ts3 group 
@@ -18,9 +21,17 @@
 
      - name: get_url
        get_url: url={{ ts3url }} dest=/home/{{ user }}
+       when: ts3home.stat.exists != true
 
      - name: unpack ts3 tar file.
        command: tar -xf {{ ts3file }} chdir=/home/{{ user }}
+       when: ts3home.stat.exists != true
 
      - name: change permissions on ts3 dir.
        file: state=directory name={{ path }} owner={{ user }} group={{ group }} 
+
+#copy startup script.
+     - template: src=/vagrant/templates/teamspeak3.conf dest=/etc/init/teamspeak3.conf owner=root group=root mode=0644
+
+#remove unwanted teamspeak tar file.
+     - file: path={{ ts3userhome }}{{ ts3file }} state=absent
