@@ -33,7 +33,7 @@
     when: checkforswap.rc != 0 
     ignore_errors: yes
     sudo: yes
-  - debug: var=checkforswap
+ #- debug: var=checkforswap
 
   - name: write swap entry in fstab
     mount: name=none src=/mnt/swap00 fstype=swap opts=sw passno=0 dump=0 state=present
