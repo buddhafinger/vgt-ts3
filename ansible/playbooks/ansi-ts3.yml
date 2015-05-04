@@ -41,6 +41,11 @@
 
 #start teamspeak3 service.
      - service: name=teamspeak3 state=started
+
+#wait for teamspeak to start and log file to generate token.
+     - wait_for: port=10011 delay=10
+       when: tokenfile.stat.exists != true
+
 #extract privilege token
      - name: extract privilege token to file.
        shell: /vagrant/scripts/extract_token.sh
