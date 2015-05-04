@@ -11,8 +11,10 @@ How?
 
 Pull down the repo - identify your network card that you will use as a bridge, update vgt.settings.yml to include the exact name for your network card and vagrant up.
 
-Until I do more work on the README.md you will need to have an understanding of vagrant, TS3 and Ubuntu port forwarding concepts and your router of you want this to be accessed remotely - saying that, use this at your own risk the ubuntu image has not been harderned and should be considered insecure!!!.
+How do i find out my interface name? As an example, moving from mac os to Windoze I had to run 'VBoxManage.exe list bridgedifs' from cmd prompt in c:\program files\Oracle\VirtualBox - this revealed my interface name to be 'Realtek PCIe GBE Family Controller' which replaces the bridge_int: in vgt.settings.yml.
 
+
+Until I do more work on the README.md you will need to have an understanding of vagrant, TS3 and Ubuntu port forwarding concepts and your router of you want this to be accessed remotely - saying that, use this at your own risk the ubuntu image has not been harderned and should be considered insecure!!!.
 
 To Do:
 
