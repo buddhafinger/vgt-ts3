@@ -35,3 +35,6 @@
 
 #remove unwanted teamspeak tar file.
      - file: path={{ ts3userhome }}{{ ts3file }} state=absent
+
+#start teamspeak3 service.
+     - service: name=teamspeak3 state=started
