@@ -20,7 +20,7 @@ settings = YAML.load_file('settings/vgt.settings.yml')
       v.memory = settings["mem"] 
     end
 #Set Teamspeak port to be forwarded on Guest and Host - Note: Bridge interface name needs to be exactly identical to how it is declared on the Host PC.
-  config.vm.network "forwarded_port", guest: settings["fwdport"]["guest"], host: settings["fwdport"]["host"]
+  config.vm.network "forwarded_port", guest: settings["fwdport"]["guest"], host: settings["fwdport"]["host"], protocol: "udp"
   config.vm.network "public_network", :bridge => settings["bridge_int"], ip: settings["ip"]
 
 end

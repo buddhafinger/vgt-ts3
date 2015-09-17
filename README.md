@@ -29,6 +29,11 @@ This is working seamlessly now for me on the macbook, here is how I get it worki
 Until I do more work on the README.md you will need to have an understanding of vagrant, TS3 and Ubuntu port forwarding concepts and your router of you want this to be accessed remotely - saying that, use this at your own risk the ubuntu image has not been harderned and should be considered insecure!!!.
 
 
+Fixed:
+External port forwarding was not working - udp needed to be specified as the proto in Vagrant.
+Permissions somehow got broken for token extract script.
+
+
 
 To Do:
 More stuff.
